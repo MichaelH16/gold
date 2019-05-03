@@ -24,7 +24,7 @@ _matrizMapa = []
 class jugador(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.imagenCarro = pygame.image.load("sprites_gold.png")
+        self.imagenCarro = pygame.image.load("imagenes/sprites_gold.png")
         self.imagenCarro.set_clip(pygame.Rect(126,26,90,140))
         self.image = self.imagenCarro.subsurface(self.imagenCarro.get_clip())
         self.inv_imagencarro = pygame.transform.flip(self.imagenCarro,True,False)
@@ -170,7 +170,7 @@ class Enemigos(pygame.sprite.Sprite):
 def cargar_mapa(nivel1):
     global _tileWidh,_widhtMapa,_heighMapa,_tileHeight,_matrizMapa#global indica las variables que se definen arriba
 
-    f = open("../maps/"+nivel1+".json","r")# accedemos al archivo nivel 1 y el r es par que sea de lectura
+    f = open("map/"+nivel1+".json","r")# accedemos al archivo nivel 1 y el r es par que sea de lectura
     data  =  json.load(f)# almacenamos la informacion de f y con jso.load decimos que es json
     f.close()
 
@@ -182,20 +182,78 @@ def cargar_mapa(nivel1):
 
     """obtener el mapa """
     for item in data["layers"]:#layers son las capas que hicimos como suelo...
-        mapa = item["data"]
+        mapa = item[0]
+        
 
-    print (mapa)
+
+        #mapa = item["data"]
+
+    print mapa
 
     """decodificar"""
     mapa = base64.decodestring(mapa)
-    #print mapa
+    print mapa
 
     """descomprimir"""
     cadena = gzip.zlib.descompress(mapa);
 
-    #print cadena
+    print cadena
 
     """ convertir caracteres a numeros"""
+    salida = []
+    for idx in xrange(0,len(cadena),4): #<< ayuda a leer vainas el for va de 0 hasta el tamano de la cadena de 0 hasta 4
+        val = ord(str(cadena[idx])) | (ord(str(cadena[idx+1])) << 8) | \
+        (ord(str(cadena[idx + 2])) << 16)|(ord(str(cadena[idx+3]))<< 24 )
+        salida.append(val)#lo que hace es operaciones con los bits devuelve los valores de los simbolos en numeros
+    print salida
+
+    """ convertir vector en matriz"""
+
+    for i in range(0,len(salida),_widhtMapa):
+        _matrizMapa.append(salida[i:i+_widhtMapa])# for de 0 hasta el tamano del mapa
+        # y se va a ir en porciones del ancho del mapa
+
+
+
+    for i in range(_heighMapa):
+        print _matrizMapa[i]
+        #anadir la matriz salida en la posicion que valla hasta el ancho
+        #renglon por renglon
+        #tramos desde el tamano del ancho
+
+    return
+
+def array_Tileset(img):
+    x = 0
+    y = 0
+    hojaTiles=[]
+    """corta cada uno de los cuadros del tile"""
+    #va a ir cortando trozo de 16 apartir de 18 en 18
+    for i in range(29):
+
+        for j in range(27):
+            imagen = cortar(img,(x,y,16,16))
+            hojaTiles.append(imagen)
+            x+=18
+        x = 0
+        y += 18
+    return hojaTiles
+
+def cortar(img,rectangulo):
+    rect = pygame.Rect(rectangulo)
+    image = pygame.Surface(rect.size).convert()
+    image.blit(img,(0,0),rect)#cortamos la imagen
+    return image
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -203,10 +261,15 @@ def goldTraver():
     pygame.init()
     ventana = pygame.display.set_mode((ancho,alto))
     pygame.display.set_caption("Gold Traver")
-    imagenFondo = pygame.image.load("carretera1.png").convert_alpha()
+    imagenFondo = pygame.image.load("imagenes/carretera1.png").convert_alpha()
     """ me permite configurar la imagen el ancho y el alto de la imagen"""
     imagenFondo = pygame.transform.scale(imagenFondo, (900, 500))
     clock = pygame.time.Clock()
+
+    img = pygame.image.load("imagenes/conejo tileset.png")
+    cargar_mapa("Nivel1")
+    hoja = array_Tileset(img)
+
 
 
 
@@ -218,6 +281,7 @@ def goldTraver():
 
 
     while True:
+
         time = clock.tick(60)
         """ si el jugador da a la x de la venta se cierra la pantalla"""
 
@@ -252,10 +316,6 @@ def goldTraver():
                         player.saltar(ventana)
                         player.salto = True
 
-
-
-
-
                     """
                     if evento.key == 273:
                         player.salto = True
@@ -270,41 +330,19 @@ def goldTraver():
                         player.contadorfun -= 1
                         player.rect.y += player.velocidad
                         """
+        for i in range(_heighMapa):
+            for j in range(_widhtMapa):
+                minum = _matrizMapa[i][j]
+                tileImg = hoja[minum-1]
+                tileImg = pygame.transform.scale(tileImg,(_tileWidh*2,_tileHeight*2))
+                screen.blit(tileImg, (j*_tileWidh*2,i*_tileHeight*2+100))
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        ventana.blit(imagenFondo,(0,0))
         """ pinta el jugador en la ventana y la dibuja """
         if player.direct == True:
             player.dibujar(ventana)
         elif player.direct == False:
             player.rdibujar(ventana)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         pygame.display.update()
 
