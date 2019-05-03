@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="67" height="15" tilewidth="16" tileheight="16" infinite="0" backgroundcolor="#808080" nextlayerid="4" nextobjectid="6">
+ <tileset firstgid="1" name="Mario Bros tileset" tilewidth="16" tileheight="16" spacing="2" tilecount="810" columns="27">
+  <image source="../imagenes/Mario Bros tileset.png" trans="ffffd5" width="485" height="546"/>
+ </tileset>
+ <tileset firstgid="811" name="clouds" tilewidth="16" tileheight="16" tilecount="2688" columns="192">
+  <image source="../imagenes/clouds.png" width="3072" height="239"/>
+ </tileset>
+ <layer id="1" name="Cielo" width="67" height="15">
+  <data encoding="base64" compression="zlib">
+   eJzV1EOUGIYahuFpbNvWZGLbtm1PJqxi22mDNjYnZpu0sdEmbdDGTmcmNu+zvV3e3f3PeVb/9j1fYOSAgNwEkYe85CM/BShIIQpThKIUozglKEkpSlOGspSjPBWoSCUqU4WqVKM6NahJLWpTh7rUoz4NaEgjGtOEpjSjOS1oSSta04a2tKM9HehIJzrTha50ozs9CKYnIYQRTgSPeMwTnvKM57zgJa94zRve8o73fOAjn/hMQJSAgC+IRGSiEJVoRCcGMYlFbOIQl3jEJwEJSURikpCUZCQnBSlJRWrSkJZ0pCcDGclEZrKQlWxkJwc5yUUguQliHesJZQMb2cRmtrCVbWxnBzvZxW5+4mf2sJdf+JV97OcABznEYY5wlGMc5wQnOcVpznCW3/idc5znD/7kAhe5xGX+4m+ucJVrXOcGN7nFbe5wl3vc5wEP+YcwwokgOKpGCKEXvelDX/rRny/5iq/5hm8ZwEAGMZghDGUYwxnBSEYxmjGMZRzjmcBEJjGZKUxlGtOZwUy+43tmMZs5zOUHfmQe81nAQhaxmCUsZRnLWcFKVrGaNaxlHesJJTCaRggiD3nJR34KUJBCFKYIRSlGcUpQklKUpgxlKUd5KlCRSlSmClWpRnVqUJNa1KYOdalHfRrQkEY0pglNaUZzWtCSVrSmDW1pR3s60JFOdKYLXelGd3oQTE9CCCOcCB7xmCc85RnPecFLXvGaN7zlHe/5wEc+8ZmA6PaCSEQmClGJRnRiEJNYxCYOcYlHfBKQkEQkJglJSUZyUpCSVKQmDWlJR3oykJFMZCYLWclGdnKQk1wEkpsg1rGeUDawkU1sZgtb2cZ2drCTXezmJ35mD3v5hV/Zx34OcJBDHOYIRznGcU5wklOc5gxn+Y3fOcd5/uBPLnCRS1zmL/7mCle5xnVucJNb3OYOd7nHfR7wkH8II5wIgmNohBB60Zs+9KUf/fmSr/iab/iWAQxkEIMZwlCGMZwRjGQUoxnDWMYxnglMZBKTmcJUpjGdGczkO75nFrOZw1x+4EfmMZ8FLGQRi1nCUpaxnBWsZBWrWcNa1rGeUAJjaoQg8pCXfOSnAAUpRGGKUJRiFKcEJSlFacpQlnKUpwIVqURlqlCValSnBjWpRW3qUJd61KcBDWlEY5rQlGY0pwUtaUVr2tCWdrSnAx3pRGe60JVudKcHwfQkhDDCieARj3nCU57xnBe85BWvecNb3vGeD3zkE58JiGUviERkohCVaEQnBjGJRWziEJd4xCcBCUlEYpKQlGQkJwUpSUVq0pCWdKQnAxnJRGaykJVsZCcHOclFILkJYh3rCWUDG9nEZrawlW1sZwc72cVufuJn9rCXX/iVfeznAAc5xGGOcJRjHOcEJznFac5wlt/4nXOc5w/+5AIXucRl/uJvrnCVa1znBje5xW3ucJd73OcBD/mHMMKJIDi2RgihF73pQ1/60Z8v+Yqv+YZvGcBABjGYIQxlGMMZwUhGMZoxjGUc45nARCYxmSlMZRrTmcFMvuN7ZjGbOczlB35kHvNZwEIWsZglLGUZy1nBSlaxmjWsZR3rCSUwjkYIIg95yUd+ClCQQhSmCEUpRnFKUJJSlKYMZSlHeSpQkUpUpgpVqUZ1alCTWtSmDnWpR30a0JBGNKYJTWlGc1rQkla0pg1taUd7OtCRTnSmC13pRnd6EExPQggjnAge8ZgnPOUZz3nBS17xmje85R3v+cBHPvGZgLj2gkhEJgpRiUZ0YhCTWMQmDnGJR3wSkJBEJCYJSUlGclKQklSkJg1pSUd6MpCRTGQmC1nJRnZykJNcBJKbIP4fbsK/JP/iv/37/7/6D2265qE=
+  </data>
+ </layer>
+ <layer id="2" name="Suelo" width="67" height="15">
+  <data encoding="base64" compression="zlib">
+   eJzt0DEKACAIhWGL7l1rV6jL5tDQZiAUwv+BKOjyFAEAAAD+SVpl93OGX80iLftvIrByDN1NI+fNTQRWjgi/6AHqlQVv7R8k
+  </data>
+ </layer>
+ <objectgroup id="3" name="objetos">
+  <object id="1" x="97" y="160" width="94" height="15.5"/>
+  <object id="2" x="289" y="192.5" width="30" height="31.5"/>
+  <object id="3" x="416" y="176" width="31.5" height="48.5"/>
+  <object id="4" x="559.5" y="176" width="32" height="47.5"/>
+ </objectgroup>
+</map>
